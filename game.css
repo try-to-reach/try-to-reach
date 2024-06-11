@@ -83,7 +83,7 @@ body {
 }
 
 #sections {
-
+margin-top: 15px;
     display: flex;
     align-content: end;
     justify-content: center;
