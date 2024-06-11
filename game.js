@@ -47,10 +47,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
             score += 5;
             updateEnergyBar();
             updateScore();
-            saveUserData();
-            if (score>10){
+             if (score>10){
                 alert("بیا پیوی یچیزی بهت بگم")
             }
+            saveUserData();
         }
     });
 
