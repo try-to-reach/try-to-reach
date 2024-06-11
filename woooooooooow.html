@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>loading page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #111;
+        }
+
+        .container {
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ring {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: -30px;
+            border: solid 4px transparent;
+            border-radius: 50%;
+            border-top: solid 4px #24ceff;
+            animation: 4s an infinite linear;
+        }
+
+        @keyframes an {
+            0% {
+                transform: rotate(360deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .ring:nth-child(2) {
+            animation: an1 3s linear infinite;
+            animation-delay: -14.8s;
+            position: absolute;
+            border-top: #93ff2d solid;
+        }
+
+        @keyframes an1 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes an2 {
+            0% {
+                transform: rotate(360deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .ring:nth-child(3) {
+            animation: an2 3s linear infinite;
+            animation-delay: -12s;
+            border-top: solid #e41cf8;
+        }
+
+        .ring:nth-child(1) {
+            animation: an3 3s linear infinite;
+            animation-delay: -4s;
+        }
+
+        @keyframes an3 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .ring:nth-child(1)::before {
+            content: "";
+            width: 15px;
+            height: 15px;
+            background-color: #24ceff;
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 5px #24ceff33,
+                0 0 0 10px #24ceff22,
+                0 0 0 5px #24ceff28,
+                0 0 0 20px #24ceff11;
+        }
+
+        .ring:nth-child(3)::before {
+            content: "";
+            width: 15px;
+            height: 15px;
+            background-color: #e41cf8;
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 5px #e41cf833,
+                0 0 0 10px #e41cf822,
+                0 0 0 5px #e41cf828,
+                0 0 0 20px #e41cf811;
+        }
+
+        .ring:nth-child(2)::before {
+            content: "";
+            width: 15px;
+            height: 15px;
+            background-color: #93ff2d;
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 5px #93ff2d33,
+                0 0 0 10px #93ff2d22,
+                0 0 0 5px #93ff2d28,
+                0 0 0 20px #93ff2d11;
+        }
+
+        .ring:nth-child(3) {
+            top: -66px;
+        }
+
+        .container p {
+            position: absolute;
+            color: #fff;
+            font-size: 1.5em;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            bottom: -180px;
+            letter-spacing: 0.15em;
+        }
+        .ring{
+            padding: 50px;
+            transition: all 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <p>loading . . .</p>
+    </div>
+    <!-- <script>
+        let ring1 = document.querySelectorAll('.ring')[0]
+        let ring2 = document.querySelectorAll('.ring')[1]
+        let ring3 = document.querySelectorAll('.ring')[2]
+        
+        ring1,ring2,ring3.addEventListener('mouseover', function(){
+            ring1.style.margin="100px"
+            ring1.style.top="-100px"
+            ring2.style.margin="100px"
+            ring2.style.top="30px"
+            ring3.style.margin="100px"
+            ring3.style.top="-100px"
+        })
+        ring1.addEventListener('mouseout', function(){
+            ring1.style.margin="-30px"
+            ring2.style.margin="-30px"
+            ring3.style.margin="-30px"
+        })
+    </script> -->
+    <script>
+        setTimeout(function() {
+            window.location.href = 'game.html'; // آدرس صفحه اصلی
+        }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+</body>
+
+</html>

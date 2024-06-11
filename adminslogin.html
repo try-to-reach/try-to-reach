@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <form id="loginForm">
+            <label for="password">Admin Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="button" onclick="uploadVoice()">Upload Voice</button>
+        </form>
+        <div id="voiceUploader">
+            <label for="voiceInput">Choose a voice file:</label>
+            <input type="file" id="voiceInput" accept="audio/*" required>
+            <button type="button" onclick="uploadFile()">Submit</button>
+            <div id="progressBar"></div>
+        </div>
+    </div>
+
+    <script>
+        function uploadVoice() {
+            document.getElementById('voiceUploader').style.display = 'block';
+        }
+
+        function uploadFile() {
+            const fileInput = document.getElementById('voiceInput');
+            const progressBar = document.getElementById('progressBar');
+
+            const file = fileInput.files[0];
+            if (file) {
+                const formData = new FormData();
+                formData.append('voice', file);
+
+                // Simulate an AJAX request to upload the voice file
+                simulateUpload(formData, progressBar);
+            } else {
+                alert('Please choose a voice file.');
+            }
+        }
+
+        function simulateUpload(formData, progressBar) {
+            // Simulate an AJAX request to upload the file
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('POST', 'your_upload_endpoint_here', true);
+
+            xhr.upload.onprogress = function (e) {
+                if (e.lengthComputable) {
+                    const percentage = (e.loaded / e.total) * 100;
+                    progressBar.style.width = percentage + '%';
+                }
+            };
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    alert('Voice uploaded successfully!');
+                    // You can handle the response from the server here
+                } else {
+                    alert('Failed to upload voice. Please try again.');
+                }
+            };
+
+            xhr.send(formData);
+        }
+    </script>
+</body>
+
+</html>

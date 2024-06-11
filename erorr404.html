@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            position: relative;
+            background: #0B5D57 radial-gradient(circle at center, #66003b 0%, #65003b 8.1%, #62013a 15.5%, #5e0238 22.5%, #580435 29%, #510632 35.3%, #4a082f 41.2%, #420a2b 47.1%, #3b0d27 52.9%, #330f24 58.8%, #2b1120 64.7%, #25131d 71%, #1f151b 77.5%, #1b1619 84.5%, #181717 91.9%, #171717 100%);
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+            height: 400px;
+
+        }
+
+        h1:nth-child(1) {
+            font-family: monospace;
+            font-weight: lighter;
+            font-size: 15vmax;
+            color: white;
+            transition: all 1s;
+            animation: anim 4s linear infinite;
+            position: relative;
+            z-index: 2;
+            --distance: .01em;
+            --dist-factor: 1;
+
+        }
+
+        h1:nth-child(2) {
+            font-weight: lighter;
+            font-family: monospace;
+            font-size: 15.2vmax;
+            color: #db73b0;
+            transition: all 1s;
+            animation: anim 3s linear infinite;
+            position: absolute;
+            --distance: .014em;
+            --dist-factor: 2;
+
+        }
+
+        h1:nth-child(3) {
+            font-weight: lighter;
+            font-family: monospace;
+            font-size: 15.1vmax;
+            color: #73c5c1;
+            transition: all 3s;
+            animation: anim 2s linear infinite;
+            position: absolute;
+            --distance: .012em;
+            --dist-factor: 1.5;
+
+        }
+
+        @keyframes anim {
+            0% {
+                transform: rotate(0deg) translate(calc(var(--distance) * -1 * var(--dist-factor)), calc(var(--distance) * -1 * var(--dist-factor))) rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg) translate(calc(var(--distance) * -1 * var(--dist-factor)), calc(var(--distance) * -1 * var(--dist-factor))) rotate(-360deg);
+            }
+
+        }
+
+        @font-face {
+            font-family: yekan;
+            src: url(./BYekan+\ Bold.ttf);
+        }
+
+        h2 {
+            font-family: yekan;
+            position: absolute;
+            color: white;
+        }
+
+        .cub {
+            top: 400px;
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            background: #0B5D57 radial-gradient(circle at center, #66003b 0%, #65003b 8.1%, #62013a 15.5%, #5e0238 22.5%, #580435 29%, #510632 35.3%, #4a082f 41.2%, #420a2b 47.1%, #3b0d27 52.9%, #330f24 58.8%, #2b1120 64.7%, #25131d 71%, #1f151b 77.5%, #1b1619 84.5%, #181717 91.9%, #171717 100%);
+            animation: anim1 3s linear infinite;
+        }
+
+        @keyframes anim1 {
+            0% {
+                transform: scaleX(0.2) scaleY(0.2)rotate(0deg);
+            }
+
+            60% {
+                
+                transform: scaleX(1) scaleY(1);
+            }
+
+            100% {
+                transform: scaleX(0.2) scaleY(0.2)rotate(360deg);
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>
+        <span>4</span>
+        <span>⬡</span>
+        <span>4</span>
+    </h1>
+    <h1>
+        <span>4</span>
+        <span>⬡</span>
+        <span>4</span>
+    </h1>
+    <h1>
+        <span>4</span>
+        <span>⬡</span>
+        <span>4</span>
+    </h1>
+    <h2>خطایی رخ داده ولی نگران نباشید ، ما درحال برسی و رفع خطلا هستیم</h2>
+    <div class="cub"></div>
+</body>
+
+</html>
