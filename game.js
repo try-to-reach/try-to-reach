@@ -42,19 +42,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     clickableImage.addEventListener('click', () => {
-    if (energy > 0) {
-        energy = Math.max(0, energy - 1); // جلوگیری از منفی شدن انرژی
-        score += 5;
-        updateEnergyBar();
-        updateScore();
-        
-        if (score > 10) {
-            alert("بیا پیوی یچیزی بهت بگم");
-            saveUserData();
+        if (energy > 0) {
+            energy = Math.max(0, energy - 1); // جلوگیری از منفی شدن انرژی
+            score += 5;
+            updateEnergyBar();
+            updateScore();
+            
+            if (score > 10) {
+                alert("بیا پیوی یچیزی بهت بگم");
+            }
+            saveUserData(); // ذخیره‌سازی داده‌های کاربر
         }
-    }
-});
-
+    });
 
     function recoverEnergy() {
         if (energy < maxEnergy) {
