@@ -48,6 +48,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
             updateEnergyBar();
             updateScore();
             saveUserData();
+            if (score>10){
+                alert("بیا پیوی یچیزی بهت بگم")
+            }
         }
     });
 
