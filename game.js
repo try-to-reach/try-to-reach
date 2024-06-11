@@ -48,9 +48,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
             updateEnergyBar();
             updateScore();
              if (score > 10) {
-    alert("بیا پیوی یچیزی بهت بگم");
+    alert("بیا پیوی یچیزی بهت بگم");}
             saveUserData();
-        }
+        
     });
 
     function recoverEnergy() {
