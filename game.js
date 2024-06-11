@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             updateEnergyBar();
             updateScore();
             
-            if (score > 10) {
-                alert("بیا پیوی یچیزی بهت بگم");
+            if (score > 100000) {
+                alert(" @alirezan5555 بیا پیوی یچیزی بهت بگم");
             }
             saveUserData(); // ذخیره‌سازی داده‌های کاربر
         }
