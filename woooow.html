@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Game</title>
+    <link rel="stylesheet" href="woooow.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300' rel='stylesheet' type='text/css'>
+    <style>
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
+
+        
+
+        .toggle {
+            position: relative;
+            display: block;
+            margin: 9px auto;
+            width: 150px;
+            height: 60px;
+            color: white;
+            outline: 0;
+            text-decoration: none;
+            border-radius: 100px;
+            border: 2px solid #546E7A;
+            background-color: #263238;
+            transition: all 500ms;
+        }
+
+        .toggle:active {
+            background-color: darken(#263238, 5%);
+        }
+
+        .toggle:hover:not(.toggle--moving):after {
+            background-color: #455A64;
+        }
+
+        .toggle:after {
+            display: block;
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            left: 4px;
+            width: calc(50% - 4px);
+            line-height: 45px;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 20px;
+            color: white;
+            background-color: #37474F;
+            border: 2px solid;
+            transition: all 500ms; 
+        }
+
+        .toggle--off:after {
+            content: 'On';
+            border-radius: 50px 5px 5px 50px;
+            color: #66BB6A;
+        }
+
+        .toggle--on:after {
+            content: 'Off';
+            border-radius: 5px 50px 50px 5px;
+            transform: translate(100%, 0);
+            color: #f44336;
+        }
+
+        .toggle--moving {
+            background-color: darken(#263238, 5%);
+        }
+
+        .toggle--moving:after {
+            color: transparent;
+            border-color: darken(#546E7A, 8%);
+            background-color: darken(#37474F, 10%);
+            transition: color 0s, transform 500ms, border-radius 500ms, background-color 500ms;
+        }
+
+        h1 {
+            font-size: 64px;
+            margin-top: 0;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <a href="#" class="toggle toggle--on"></a>
+
+       
+        <div id="score">0</div>
+        <div id="sath">سطح : به زودی</div>
+        <img id="clickable-image" src="./image_1718117211950_21l8ai.svg" alt="Click Me!" style=" margin-top:163px;
+        transform: scale(1.7); background-color:white; border-radius:90px ;">
+        <div id="energy-bar">
+            <div id="energy-level"></div>
+        </div>
+        <div id="sections">
+            <div class="section">به زودی</div>
+            <div class="section">به زودی</div>
+            <div class="section">به زودی</div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+         let isAtOriginalPage = true;
+
+$('.toggle').click(function(e) {
+    var toggle = this;
+    e.preventDefault();
+
+    $(toggle).toggleClass('toggle--off')
+             .toggleClass('toggle--on')
+             .addClass('toggle--moving');
+
+    setTimeout(function() {
+        $(toggle).removeClass('toggle--moving');
+    }, 200);
+
+    setTimeout(function() {
+        if (isAtOriginalPage) {
+            window.location.href = "./game.html"; // آدرس صفحه مورد نظر خود را وارد کنید
+        } else {
+            window.history.back();
+        }
+        isAtOriginalPage = !isAtOriginalPage;
+    }, 800); // تاخیر 1 ثانیه (1000 میلی‌ثانیه)
+});
+</script>
+</body>
+</html>

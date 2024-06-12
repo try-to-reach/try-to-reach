@@ -1,0 +1,119 @@
+@font-face {
+    font-family: "yekan";
+    src: url(./BYekan+\ Bold.ttf);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 30px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+#app {
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    padding: 15px;
+}
+
+#energy-bar {
+   margin-top: 159px;
+    width: 100%;
+    height: 20px;
+    background-color: #ccc;
+    margin-bottom: 10px;
+    position: relative;
+    border-radius: 9px;
+}
+
+#energy-level {
+    height: 100%;
+    width: 100%;
+    background-color: #66BB6A;
+    transition: width 0.3s;
+    border-radius: 9px;
+}
+
+#clickable-image {
+    width: 50%;
+    max-width: 100px;
+    height: auto;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+    
+}
+#clickable-image:active {
+    animation: click-animation 0.3s forwards;
+}
+
+@keyframes click-animation {
+    0% {
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+}
+    50% {
+        transform: scale(0.7);
+        -webkit-transform: scale(0.7);
+        -moz-transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        -o-transform: scale(0.7);
+}
+    100% {
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+}
+}
+
+#score {
+    font-size: 5vw;
+    margin-bottom: 10px;
+}
+
+#sections {
+margin-top: 30px;
+    display: flex;
+    align-content: end;
+    justify-content: center;
+    font-family: yekan;
+    max-height: 30px;
+}
+
+.section {
+    font-size: 3vw;
+    width: 30%;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Media queries for larger screens */
+@media (min-width: 600px) {
+    #clickable-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .section {
+        font-size: 10px;
+    }
+
+    #score {
+        font-size: 24px;
+    }
+}
