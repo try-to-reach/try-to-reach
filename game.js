@@ -1,3 +1,33 @@
+// شناسه یکتا برای کاربر
+function generateUserId() {
+    return 'user_' + Math.random().toString(36).substr(2, 9);
+}
+
+function getUserId() {
+    let userId = localStorage.getItem('userId');
+    if (!userId) {
+        userId = generateUserId();
+        localStorage.setItem('userId', userId);
+    }
+    return userId;
+}
+
+const userId = getUserId();
+const referralLink = `${window.location.origin}?ref=${userId}`;
+
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+function addReferralScore(referrerId) {
+    const referrerData = JSON.parse(localStorage.getItem(referrerId));
+    if (referrerData) {
+        referrerData.score += 10; // امتیازات رفرال
+        localStorage.setItem(referrerId, JSON.stringify(referrerData));
+    }
+}
+
 let energy = 100;
 let score = 0;
 const maxEnergy = 100;
@@ -9,9 +39,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const scoreDisplay = document.getElementById('score');
     const clickableImage = document.getElementById('clickable-image');
 
+    // بررسی لینک رفرال
+    const referrerId = getQueryParam('ref');
+    if (referrerId) {
+        addReferralScore(referrerId);
+    }
+
     // بارگذاری داده‌های کاربر از localStorage
     function loadUserData() {
-        const data = JSON.parse(localStorage.getItem('userData'));
+        const data = JSON.parse(localStorage.getItem(userId));
         if (data) {
             energy = data.energy;
             score = data.score;
@@ -30,7 +66,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             score: score,
             lastActiveTime: new Date().getTime()
         };
-        localStorage.setItem('userData', JSON.stringify(data));
+        localStorage.setItem(userId, JSON.stringify(data));
     }
 
     function updateEnergyBar() {
@@ -38,7 +74,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     function updateScore() {
-        scoreDisplay.textContent = ` ${score}`;
+        scoreDisplay.textContent = `${score}`;
     }
 
     clickableImage.addEventListener('click', () => {
@@ -49,7 +85,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             updateScore();
             
             if (score > 1000000) {
-                alert(" @alirezan5555 بیا پیوی یچیزی بهت بگم");
+                alert("@alirezan5555 بیا پیوی یچیزی بهت بگم");
             }
             saveUserData(); // ذخیره‌سازی داده‌های کاربر
         }
@@ -70,4 +106,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // بارگذاری داده‌های کاربر هنگام بارگذاری صفحه
     loadUserData();
+
+    // نمایش لینک رفرال
+    const referralLinkElement = document.createElement('div');
+    referralLinkElement.innerHTML = `Referral Link: <a href="${referralLink}">${referralLink}</a>`;
+    document.getElementById('app').appendChild(referralLinkElement);
 });
