@@ -13,7 +13,7 @@ function getUserId() {
 }
 
 const userId = getUserId();
-const referralLink = `${window.location.origin}?ref=${userId}`;
+const referralLink = `${window.location.origin}${window.location.pathname}?ref=${userId}`;
 
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -110,5 +110,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // نمایش لینک رفرال
     const referralLinkElement = document.createElement('div');
     referralLinkElement.innerHTML = `Referral Link: <a href="${referralLink}">${referralLink}</a>`;
-    document.getElementById('app').appendChild(referralLinkElement);
+    document.getElementById('referral-link').appendChild(referralLinkElement);
+
+    // افزودن قابلیت کپی لینک
+    const copyButton = document.getElementById('copy-link-button');
+    copyButton.addEventListener('click', () => {
+        navigator.clipboard.writeText(referralLink).then(() => {
+            alert('لینک رفرال کپی شد!');
+        }).catch(err => {
+            console.error('خطا در کپی کردن لینک: ', err);
+        });
+    });
 });
