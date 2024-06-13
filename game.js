@@ -107,18 +107,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // بارگذاری داده‌های کاربر هنگام بارگذاری صفحه
     loadUserData();
 
-    // نمایش لینک رفرال
-    const referralLinkElement = document.createElement('div');
-    referralLinkElement.innerHTML = `Referral Link: <a href="${referralLink}">${referralLink}</a>`;
-    document.getElementById('referral-link').appendChild(referralLinkElement);
-
-    // افزودن قابلیت کپی لینک
-    const copyButton = document.getElementById('copy-link-button');
-    copyButton.addEventListener('click', () => {
-        navigator.clipboard.writeText(referralLink).then(() => {
-            alert('لینک رفرال کپی شد!');
-        }).catch(err => {
-            console.error('خطا در کپی کردن لینک: ', err);
-        });
-    });
-});
+   
