@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             updateEnergyBar();
             updateScore();
             
-            if (score > 100000000) {
+            if (score > 1000000) {
                 alert("@alirezan5555 بیا پیوی یچیزی بهت بگم");
             }
             saveUserData(); // ذخیره‌سازی داده‌های کاربر
@@ -106,4 +106,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // بارگذاری داده‌های کاربر هنگام بارگذاری صفحه
     loadUserData();
-});
+}); // اینجا بود که باید یک آکولاد بسته شود تا document.addEventListener بسته شود
+// بستن script
