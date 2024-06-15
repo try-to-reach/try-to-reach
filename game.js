@@ -20,14 +20,6 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
-function addReferralScore(referrerId) {
-    const referrerData = JSON.parse(localStorage.getItem(referrerId));
-    if (referrerData) {
-        referrerData.score += 10; // امتیازات رفرال
-        localStorage.setItem(referrerId, JSON.stringify(referrerData));
-    }
-}
-
 let energy = 100;
 let score = 0;
 const maxEnergy = 100;
@@ -38,12 +30,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const energyLevel = document.getElementById('energy-level');
     const scoreDisplay = document.getElementById('score');
     const clickableImage = document.getElementById('clickable-image');
-
-    // بررسی لینک رفرال
-    const referrerId = getQueryParam('ref');
-    if (referrerId) {
-        addReferralScore(referrerId);
-    }
 
     // بارگذاری داده‌های کاربر از localStorage
     function loadUserData() {
