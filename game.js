@@ -1,25 +1,3 @@
-// شناسه یکتا برای کاربر
-function generateUserId() {
-    return 'user_' + Math.random().toString(36).substr(2, 9);
-}
-
-function getUserId() {
-    let userId = localStorage.getItem('userId');
-    if (!userId) {
-        userId = generateUserId();
-        localStorage.setItem('userId', userId);
-    }
-    return userId;
-}
-
-const userId = getUserId();
-const referralLink = `${window.location.origin}${window.location.pathname}?ref=${userId}`;
-
-function getQueryParam(param) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-}
-
 let energy = 100;
 let score = 0;
 const maxEnergy = 100;
@@ -33,7 +11,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // بارگذاری داده‌های کاربر از localStorage
     function loadUserData() {
-        const data = JSON.parse(localStorage.getItem(userId));
+        const data = JSON.parse(localStorage.getItem('userData'));
         if (data) {
             energy = data.energy;
             score = data.score;
@@ -52,7 +30,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             score: score,
             lastActiveTime: new Date().getTime()
         };
-        localStorage.setItem(userId, JSON.stringify(data));
+        localStorage.setItem('userData', JSON.stringify(data));
     }
 
     function updateEnergyBar() {
@@ -60,7 +38,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     function updateScore() {
-        scoreDisplay.textContent = `${score}`;
+        scoreDisplay.textContent = ` ${score}`;
     }
 
     clickableImage.addEventListener('click', () => {
@@ -71,7 +49,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             updateScore();
             
             if (score > 1000000) {
-                alert("@alirezan5555 بیا پیوی یچیزی بهت بگم");
+                alert(" @alirezan5555 بیا پیوی یچیزی بهت بگم");
             }
             saveUserData(); // ذخیره‌سازی داده‌های کاربر
         }
@@ -92,5 +70,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // بارگذاری داده‌های کاربر هنگام بارگذاری صفحه
     loadUserData();
-}); // اینجا بود که باید یک آکولاد بسته شود تا document.addEventListener بسته شود
-// بستن script
+});
