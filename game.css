@@ -7,7 +7,8 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    background-color: #ffffff;
+    background-image:url("hex-background-networking.jpg");
+
     margin: 0;
     padding: 20px;
 	padding-top:0px;
