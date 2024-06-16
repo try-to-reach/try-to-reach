@@ -10,6 +10,7 @@ body {
     background-color: #3f3f3f;
     margin: 0;
     padding: 20px;
+	padding-top:0px
     height: 100vh;
     box-sizing: border-box;
 }
