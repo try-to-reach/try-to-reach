@@ -216,6 +216,10 @@ function checkNotifChanged() {
 
 document.querySelector('.notif a button').addEventListener('click', changeNotif);
 document.addEventListener('DOMContentLoaded', checkNotifChanged);
+        document.addEventListener('DOMContentLoaded', function() {
+    var sections = document.getElementById('sections');
+    sections.scrollIntoView({ behavior: 'smooth' });
+});
 </script>
 </body>
 </html>
