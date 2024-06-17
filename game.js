@@ -62,14 +62,27 @@ document.addEventListener('DOMContentLoaded', (event) => {
         updateEnergyBar();
     }
 
-    // ذخیره‌سازی داده‌های کاربر در localStorage
+    // ذخیره‌سازی داده‌های کاربر در سرور
     function saveUserData() {
         const data = {
             energy: energy,
             score: scoreManager.getScore(),
             lastActiveTime: new Date().getTime()
         };
+
         localStorage.setItem('userData', JSON.stringify(data));
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:3000/save', true);
+        xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText);
+            } else if (xhr.readyState === 4) {
+                console.error('Error saving data:', xhr.statusText);
+            }
+        };
+        xhr.send(JSON.stringify(data));
     }
 
     function updateEnergyBar() {
