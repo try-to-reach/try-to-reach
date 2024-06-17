@@ -1,5 +1,5 @@
 let energy = 100;
-let score = 0;
+let _score = 0;
 const maxEnergy = 100;
 const energyRecoveryRate = 0.2; // انرژی بازیابی در هر ثانیه
 const recoveryInterval = 1000; // 1 ثانیه
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const data = JSON.parse(localStorage.getItem('userData'));
         if (data) {
             energy = data.energy;
-            score = data.score;
+            _score = data.score;
             const currentTime = new Date().getTime();
             const elapsedTime = (currentTime - data.lastActiveTime) / 1000; // تبدیل میلی‌ثانیه به ثانیه
             energy = Math.min(maxEnergy, energy + elapsedTime * energyRecoveryRate);
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function saveUserData() {
         const data = {
             energy: energy,
-            score: score,
+            score: _score,
             lastActiveTime: new Date().getTime()
         };
         localStorage.setItem('userData', JSON.stringify(data));
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     function updateScore() {
-        scoreDisplay.textContent = ` ${score}`;
+        scoreDisplay.textContent = ` ${_score}`;
     }
 
     function checkScoreRate() {
@@ -52,25 +52,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
         return totalScoreLastMinute <= maxScorePerMinute;
     }
 
+    function addScore(points) {
+        scoreLog.push({ time: new Date().getTime(), score: points });
+        if (!checkScoreRate()) {
+            alert('بیش از حد مجاز امتیاز کسب کردید. امتیاز شما صفر شد.');
+            _score = 0;
+            scoreLog = []; // ریست کردن آرایه امتیازات
+        } else {
+            _score += points;
+        }
+        updateScore();
+        saveUserData(); // ذخیره‌سازی داده‌های کاربر
+    }
+
     clickableImage.addEventListener('click', () => {
         if (energy > 0) {
             energy = Math.max(0, energy - 1); // جلوگیری از منفی شدن انرژی
-            scoreLog.push({ time: new Date().getTime(), score: 5 });
-            score += 5;
-
-            if (!checkScoreRate()) {
-                alert('بیش از حد مجاز امتیاز کسب کردید. امتیاز شما صفر شد.');
-                score = 0;
-                scoreLog = []; // ریست کردن آرایه امتیازات
-            }
-
+            addScore(5); // اضافه کردن امتیاز به جای افزایش مستقیم
             updateEnergyBar();
-            updateScore();
-            
-            if (score > 1000000) {
-                alert(" @alirezan5555 بیا پیوی یچیزی بهت بگم");
-            }
-            saveUserData(); // ذخیره‌سازی داده‌های کاربر
         }
     });
 
