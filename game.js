@@ -3,13 +3,13 @@ let score = 0;
 const maxEnergy = 100;
 const energyRecoveryRate = 0.2; // انرژی بازیابی در هر ثانیه
 const recoveryInterval = 1000; // 1 ثانیه
-const maxClicksPerMinute = 20000; // حداکثر تعداد کلیک در هر دقیقه
+const maxScorePerMinute = 20000; // حداکثر امتیاز در هر دقیقه
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const energyLevel = document.getElementById('energy-level');
     const scoreDisplay = document.getElementById('score');
     const clickableImage = document.getElementById('clickable-image');
-    let clickTimes = []; // آرایه‌ای برای ذخیره زمان کلیک‌ها
+    let scoreLog = []; // آرایه‌ای برای ذخیره زمان و امتیازهای ثبت شده
 
     // بارگذاری داده‌های کاربر از localStorage
     function loadUserData() {
@@ -43,25 +43,27 @@ document.addEventListener('DOMContentLoaded', (event) => {
         scoreDisplay.textContent = ` ${score}`;
     }
 
-    function checkClickRate() {
+    function checkScoreRate() {
         const currentTime = new Date().getTime();
-        // حذف کلیک‌هایی که بیش از یک دقیقه از زمان آن‌ها گذشته است
-        clickTimes = clickTimes.filter(time => currentTime - time <= 60000);
-        return clickTimes.length <= maxClicksPerMinute;
+        // حذف امتیازاتی که بیش از یک دقیقه از زمان آن‌ها گذشته است
+        scoreLog = scoreLog.filter(log => currentTime - log.time <= 60000);
+        // محاسبه مجموع امتیازهای کسب شده در یک دقیقه اخیر
+        const totalScoreLastMinute = scoreLog.reduce((total, log) => total + log.score, 0);
+        return totalScoreLastMinute <= maxScorePerMinute;
     }
 
     clickableImage.addEventListener('click', () => {
         if (energy > 0) {
-            clickTimes.push(new Date().getTime());
+            energy = Math.max(0, energy - 1); // جلوگیری از منفی شدن انرژی
+            scoreLog.push({ time: new Date().getTime(), score: 5 });
+            score += 5;
 
-            if (!checkClickRate()) {
-                alert('بیش از حد مجاز کلیک کردید. امتیاز شما صفر شد.');
+            if (!checkScoreRate()) {
+                alert('بیش از حد مجاز امتیاز کسب کردید. امتیاز شما صفر شد.');
                 score = 0;
-                clickTimes = []; // ریست کردن آرایه کلیک‌ها
-            } else {
-                energy = Math.max(0, energy - 1); // جلوگیری از منفی شدن انرژی
-                score += 5;
+                scoreLog = []; // ریست کردن آرایه امتیازات
             }
+
             updateEnergyBar();
             updateScore();
             
