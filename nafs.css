@@ -1,0 +1,139 @@
+@font-face {
+    font-family: 'Morabba';
+    src: url('Morabba-Bold.woff') format('woff');
+    font-weight: bold;}
+*{
+    color: black;
+}
+
+body {
+    font-family: 'Morabba', sans-serif;
+    background-image: url("./hex-background-networking.jpg");
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    min-height: 100vh;
+}
+
+.col {
+    max-width: 20rem;
+    width: 100%;
+}
+
+/* Back Button */
+.back-button {
+    background-color: #0d3d41c5;
+    color: white;
+    padding: 0.625rem 1.25rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 0.25rem 0.125rem;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 0.75rem;
+}
+
+.back-button:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #af4c4c;
+}
+
+ 
+.mojab div{
+    margin: auto 7px;
+}
+.first-section {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.coin {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tedad {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.tedad span:first-child {
+    margin-right: 0.5rem;
+}
+
+/* Mojab Section */
+.mojab h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    text-align: right;
+}
+
+.kenaria {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+}
+
+.fast,
+.porkon {
+    background-color: rgba(107, 107, 107, 0.4);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    width: 48%;
+    cursor: pointer;
+}
+
+.fast span,
+.porkon span {
+    font-size: 1.5rem;
+}
+
+/* Increase Rozi Section */
+.secend h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    text-align: right;
+}
+
+.secend> div > div {
+    background-color: rgba(107, 107, 107, 0.4);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.secend > div > div > div:first-child {
+    display: flex;
+    align-items: center;
+}
+
+.secend > div > div > div:first-child span {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.secend > div > div > div:first-child > div p:first-child {
+    margin-bottom: 0.25rem;
+}
+
+.secend > div > div > div:last-child {
+    color: #999999;
+}
+
+.level-text {
+    font-size: 0.75rem;
+}
