@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const energyLevel = document.getElementById('energy-level');
 
     let score = parseFloat(localStorage.getItem('userScore')) || 0;
-    let clickPower = parseInt(localStorage.getItem('clickLevel')) || 1;
+    let clickPower = 3 + parseInt(localStorage.getItem('clickLevel')) || 1;
     let maxEnergy = 100 + (parseInt(localStorage.getItem('capacityLevel')) || 1) * 50;
     let currentEnergy = parseInt(localStorage.getItem('userEnergy')) || maxEnergy;
     let energyRefillRate = 1 + (parseInt(localStorage.getItem('speedLevel')) || 1) * 0.8;
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function click() {
         if (currentEnergy >= 10) {
             score += clickPower;
-            currentEnergy -= 10;
+            currentEnergy -= 3;
             localStorage.setItem('userScore', score);
             localStorage.setItem('userEnergy', currentEnergy);
             updateDisplay();
